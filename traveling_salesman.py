@@ -1,51 +1,49 @@
-from simulated_annealing import SimulatedAnnealing
-from tsp import Tour
-import matplotlib.pyplot as plt
-import random
-import time
+
+class City:
+    '''
+    City object
+    1. x : x coordinate of the city
+    2. y : y coordinate of the city
+    3. front : connection in the front of the city
+    4. back : connection in the back of the city
+    '''
+    front = None
+    back = None
+
+    def __init__(self, x, y):
+        '''Initialize the coordinate of the city'''
+        self.x = x
+        self.y = y
+
+    def add_connection(self, front, back):
+        '''Add Connection to the city'''
+        self.front = front
+        self.back = back
+
+    def swap_connection(self):
+        '''Swap the Connection to the city'''
+        self.front, self.back = self.back, self.front
 
 
-'''
-Trying the function
-'''
-# Some Important Parameters
-recurse = 200
-radiusX = 1000
-radiusY = 1000
-city_number = 30
+class Tour:
+    '''
+    City object
+    1. xList : list of x coordinate of the tour
+    2. yList : list of y coordinate of the tour
+    3. tour : list of cities in order
+    4. distance : total distance traveled
+    '''
 
-# Generate Random City Coordinate
-cities = [(random.randrange(radiusX), random.randrange(radiusY)) for x in range(city_number)]
-x0 = []
-y0 = []
-for data in cities:
-    x0.append(data[0])
-    y0.append(data[1])
-plt.figure(0)
-plt.scatter(x0, y0, marker='x')
-plt.title("Initial Points")
+    def __init__(self, xList, yList, tour, distance):
+        '''Initialize the information about the tour'''
+        self.xList = xList
+        self.yList = yList
+        self.tour = tour
+        self.distance = distance
 
-'''
-Using the methods and iterate it multiple times to get the best result
-'''
-best_result = None
-for i in range(recurse):
-    start = time.time()
-    tour = SimulatedAnnealing(cities, temperature=2000, cooling_rate=0.3,
-                              start=0)
-    print(f"Simulated Annealing {i+1} Execution Time {time.time() - start} seconds")
-    print(f"Simulated Annealing {i+1} distance : {tour.distance}")
-    print()
-    if best_result is None:
-        best_result = tour
-        continue
-    if tour.distance < best_result.distance:
-        best_result.set_attributes(tour)
-
-print(f"Simulated Annealing Best Result distance : {best_result.distance}")
-
-'''Drawing the Visualization'''
-plt.figure(1)
-plt.plot(best_result.xList, best_result.yList, 'xb-')
-plt.title("Traveling Salesman Problem with Simulated Annealing")
-plt.show()
+    def set_attributes(self, other):
+        '''Set the object attributes to match other object attributes'''
+        self.xList = other.xList
+        self.yList = other.yList
+        self.tour = other.tour
+        self.distance = other.distance

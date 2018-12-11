@@ -1,6 +1,6 @@
 import random
 import math
-from tsp import City, Tour
+from traveling_salesman import City, Tour
 
 
 def Euclidean_dist(a, b):
@@ -49,6 +49,7 @@ def SimulatedAnnealing(cities, temperature=1000, cooling_rate=1, start=None, end
     3. cooling_step : cooling down the temperature to make it less likely to accept worse change over time
     4. start : id or index which the coordinate of the route starts
     5. end : id or index which the coordinate of the route ends
+    6. log : if true will show the logging of the process of this function
     --> Returns : x and y coordinates of cities in order
     - note :-more temperature means the worse alternative solution will be accepted
             -the higher the cooling rate the faster the temperature to go down, the more worse alternative will be rejected
