@@ -11,7 +11,8 @@ Always fascinated by traveling salesman problem but only just now understand (on
 
 Function :
 1. SimulatedAnnealing
-- Params :  a. cities : lists of cities coordinateof cities lists
+- Params :  
+            a. cities : lists of cities coordinateof cities lists
             b. temperature : initial temperature, used to check if the change is acceptable
             c. cooling_step : cooling down the temperature to make it less likely to accept worse change over time
             d. start : id or index which the coordinate of the route starts
