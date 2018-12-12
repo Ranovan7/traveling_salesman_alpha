@@ -1,4 +1,4 @@
-# traveling_salesman_alpha
+# Traveling Salesman Problem Exercise
 Trying simulated annealing method to find shortest path in traveling salesman problem
 
 Always fascinated by traveling salesman problem but only just now understand (one of) the method used in dealing with it.
